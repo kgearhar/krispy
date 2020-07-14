@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="krispy", # Replace with your own username
-    version="1.0.0",
+    version="1.0.1",
     author="Kristen Gearhart",
     author_email="kgears502@gmail.com",
     description="ahp trade study tools",
@@ -18,4 +18,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.8',
+    install_requires=[
+        'numpy>=1.19.0',
+        'matplotlib>=3.2.2',
+    ]
 )
