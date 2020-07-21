@@ -4,8 +4,11 @@ import random
 
 # takes in list of result lists
 
-def graph(results, save_location=None):
+def graph(results, names, save_location=None):
     bar_width = 1 / (len(results[0]) + 1)
+
+    print(results)
+    print(names)
 
     np_res = np.array(results)
     bar_matrix = np_res.transpose()
@@ -15,6 +18,8 @@ def graph(results, save_location=None):
 
     for index in range(1, len(bar_matrix)):
         r_array.append([x + bar_width for x in r_array[index - 1]])
+
+    print(r_array)
     
     for i in range(0, len(r_array)):
         randy_beans = [random.randint(0, 255) for x in range(3)]
@@ -25,8 +30,9 @@ def graph(results, save_location=None):
     labels = []
     labels.append('Orig. Results')
     if len(results) > 1:
-        for i in range(1, len(results)):
-            labels.append(f'(-)Obj.{i}')
+        for name in names:
+            labels.append(f'(-){name}')
+        print(labels)
         ticks = [r + bar_width for r in range(len(results))]
         plt.title('n-1 Sensitivity Analysis')
     else:
@@ -34,9 +40,6 @@ def graph(results, save_location=None):
         plt.title('Results')
     plt.xlabel('Trade Study Run', fontweight='bold')
     plt.xticks(ticks, labels)
-
-
-    plt.legend()
 
     if save_location is None:
         plt.show()
@@ -46,6 +49,8 @@ def graph(results, save_location=None):
 
 def test():
     test_data = [[1, 4, 3], [4, 6, 8]]
-    graph(test_data, 'test.png')
+    names = ['peanut butter']
+    graph(test_data, names, 'test.png')
+
 if __name__ == '__main__':
     test()
