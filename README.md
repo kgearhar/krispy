@@ -31,7 +31,7 @@ The following matrix operations are available to the user.
 ## Graphing
 
 1. To graph the data & save the image (for uploading) use 
-	`graph(results, 'filename_for_saving.png')`
+	`graph(results, names, 'filename_for_saving.png')`
 
 	You can send `graph` the original results, or the results from the sensitivity analysis.
 	If you send JUST the original results, you'll need to wrap it in a list, i.e. `[results]`
