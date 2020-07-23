@@ -28,16 +28,21 @@ def graph(results, names, save_location=None):
 
 
     labels = []
-    labels.append('Orig. Results')
+    
     if len(results) > 1:
+        labels.append('Orig. Results')
         for name in names:
             labels.append(f'(-){name}')
         print(labels)
-        ticks = [r + bar_width for r in range(len(results))]
+        num_sub_bars = len(results[0])
+        ticks = [r + ((num_sub_bars -1)/2)*bar_width for r in range(len(results))]
         plt.title('n-1 Sensitivity Analysis')
     else:
-        ticks = [bar_width]
+        for name in names:
+            labels.append(f'{name}')
+        ticks = [r * bar_width for r in range(len(results[0]))]
         plt.title('Results')
+
     plt.xlabel('Trade Study Run', fontweight='bold')
     plt.xticks(ticks, labels)
 
@@ -48,9 +53,9 @@ def graph(results, names, save_location=None):
 
 
 def test():
-    test_data = [[1, 4, 3], [4, 6, 8]]
-    names = ['peanut butter']
-    graph(test_data, names, 'test.png')
+    test_data = [[1, 4, 3, 6, 8], [4, 5, 7 , 2, 8], [4, 1, 3,9, 7], [3, 1,4, 5, 2]]
+    names = ['catfish', 'cod', 'salmon', 'scallop']
+    graph(test_data, names)
 
 if __name__ == '__main__':
     test()

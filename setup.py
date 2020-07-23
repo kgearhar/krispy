@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="krispy", # Replace with your own username
-    version="1.0.2",
+    version="1.0.3",
     author="Kristen Gearhart",
     author_email="kgears502@gmail.com",
     description="ahp trade study tools",
