@@ -25,7 +25,7 @@ def get_sensitivity(criteria_list, alt_weight_matrix):
     varying_results.append(_multiply(original_matrix.eigenvector, alt_weight_matrix))
 
     # now we add the new results
-    for i in range(len(alt_weight_matrix) + 1 ):
+    for i in range(len(alt_weight_matrix[0])):
 
         shrunken_criteria_matrix = original_matrix._remove_row(i)
         shrunken_priority = shrunken_criteria_matrix.eigenvector
@@ -55,7 +55,7 @@ def test():
     print('All the results\n')
 
     print(results)
-    graph(results)
+    graph(results, ['peanut butter', 'kava', 'beard', 'leather', 'father'])
 
 if __name__ == '__main__':
     test()
